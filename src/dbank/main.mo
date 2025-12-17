@@ -11,8 +11,15 @@ actor DBank {
   };
 
   public func withdraw(amount: Nat) {
-    currentValue -= amount;
-    Debug.print(debug_show(currentValue));
+    // let tempValue: Int = currentValue - amount; // any whole number, pos or neg
+    // if (tempValue >= 0) {}
+    if (amount <= currentValue) {
+      currentValue -= amount;
+      Debug.print(debug_show(currentValue));
+    } else {
+      Debug.print("insufficient funds");
+      Debug.print(debug_show(currentValue));
+    }
   };
 }
 
