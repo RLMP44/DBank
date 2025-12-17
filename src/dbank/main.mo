@@ -9,6 +9,11 @@ actor DBank {
     currentValue += amount;
     Debug.print(debug_show(currentValue));
   };
+
+  public func withdraw(amount: Nat) {
+    currentValue -= amount;
+    Debug.print(debug_show(currentValue));
+  };
 }
 
 // Motoko style guide: https://legacy.internetcomputer.org/docs/motoko/style#style
