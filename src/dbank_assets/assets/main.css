@@ -13,7 +13,7 @@ h2 {
 }
 
 h1 {
-  color: white;
+  color: #e4f3ec;
   font-size: 16px;
   font-weight: 500;
   margin-top: 10px;
@@ -36,7 +36,7 @@ form {
   width: 100px;
   height: 3px;
   margin: 20px auto;
-  background-color: #617BFF;
+  background-color: #198443;
 }
 
 input,
@@ -46,8 +46,8 @@ textarea {
   display: block;
   margin: 0;
   border-radius: 7px;
-  border: 2px white solid;
-  background-color: white;
+  border: 2px #e4f3ec solid;
+  background-color: #e4f3ec;
   padding: 10px 20px;
   width: 100%;
   color: #1E1C29;
@@ -59,7 +59,7 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border: 2px #617BFF solid;
+  border: 2px #37c47c solid;
 }
 
 .container {
@@ -90,16 +90,16 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   font-size: 20px;
   font-weight: 600;
-  border: 2px #617BFF solid;
-  color: white;
-  background-color: #617BFF;
+  border: 2px #198443 solid;
+  color: #e4f3ec;
+  background-color: #198443;
   padding: 15px;
   transition: all 0.2s;
 }
 
 #submit-btn:hover {
-  border: 2px #8095FF solid;
-  background-color: #8095FF;
+  border: 2px #37c47c solid;
+  background-color: #37c47c;
 }
 
 #submit-btn:disabled {
