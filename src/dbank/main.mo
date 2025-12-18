@@ -1,8 +1,10 @@
 import Debug "mo:base/Debug";
 
 actor DBank {
-  var currentValue = 300;
-  currentValue := 100;
+  // 'stable' turns the variable from flexible to persisted
+  // persists through re-deploys
+  stable var currentValue: Nat = 300;
+  // currentValue := 100;
   let id = 1035;
 
   public func topUp(amount: Nat) {
@@ -11,8 +13,6 @@ actor DBank {
   };
 
   public func withdraw(amount: Nat) {
-    // let tempValue: Int = currentValue - amount; // any whole number, pos or neg
-    // if (tempValue >= 0) {}
     if (amount <= currentValue) {
       currentValue -= amount;
       Debug.print(debug_show(currentValue));
