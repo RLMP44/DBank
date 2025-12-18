@@ -21,6 +21,12 @@ actor DBank {
       Debug.print(debug_show(currentValue));
     }
   };
+
+  // must add "query" for query calls
+  // when returning something, must include "async" and returning type
+  public query func checkBalance(): async Nat {
+    return currentValue;
+  };
 }
 
 // Motoko style guide: https://legacy.internetcomputer.org/docs/motoko/style#style
