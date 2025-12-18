@@ -105,7 +105,7 @@ module.exports = {
   ],
   // proxy /api to port 8000 during development
   devServer: {
-    proxy: {
+    proxy: [{
       "/api": {
         target: "http://localhost:8000",
         changeOrigin: true,
@@ -113,7 +113,7 @@ module.exports = {
           "^/api": "/api",
         },
       },
-    },
+    }],
     hot: true,
     watchFiles: [path.resolve(__dirname, "src", frontendDirectory)],
     liveReload: true,
