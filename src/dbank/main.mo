@@ -6,8 +6,11 @@ actor DBank {
   // 'stable' turns the variable from flexible to persisted
   // persists through re-deploys
   stable var currentValue: Float = 300;
+  // currentValue := 300;
+  Debug.print(debug_show(currentValue));
   let id = 1035;
   stable var startTime = Time.now();
+  // startTime := Time.now();
   Debug.print(debug_show(startTime));
 
   public func topUp(amount: Float) {

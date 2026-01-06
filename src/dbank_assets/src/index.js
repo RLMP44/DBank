@@ -12,14 +12,41 @@ export const dbank = Actor.createActor(idlFactory, {
   canisterId,
 });
 
-window.addEventListener("load", async function() {
-  console.log("dbank canisterId:", canisterId);
-
+async function checkBalance() {
   try {
     const currentAmount = await dbank.checkBalance();
-    console.log(currentAmount);
-    document.getElementById("value").innerText = currentAmount.toString();
+    const roundAmount = currentAmount.toFixed(2)
+    document.getElementById("value").innerText = roundAmount.toString();
   } catch (err) {
     console.error("Error fetching balance:", err);
   }
+}
+
+window.addEventListener("load", async function() {
+  checkBalance()
+})
+
+document.querySelector("form").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const button = event.target.querySelector("#submit-btn");
+
+  const inputAmount = parseFloat(document.getElementById("input-amount").value);
+  const withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
+
+  button.setAttribute("disabled", true);
+
+  if (document.getElementById("input-amount").value.length != 0) {
+    await dbank.topUp(inputAmount);
+    document.getElementById("input-amount").value = "";
+  }
+
+  if (document.getElementById("withdraw-amount").value.length != 0) {
+    await dbank.withdraw(withdrawAmount);
+    document.getElementById("withdraw-amount").value = "";
+  }
+
+  await checkBalance();
+  button.removeAttribute("disabled");
+
 })
