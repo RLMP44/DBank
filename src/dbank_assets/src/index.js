@@ -23,7 +23,7 @@ async function checkBalance() {
 }
 
 window.addEventListener("load", async function() {
-  checkBalance()
+  checkBalance();
 })
 
 document.querySelector("form").addEventListener("submit", async function(event) {
@@ -46,7 +46,8 @@ document.querySelector("form").addEventListener("submit", async function(event) 
     document.getElementById("withdraw-amount").value = "";
   }
 
+  // await dbank.compound();
+
   await checkBalance();
   button.removeAttribute("disabled");
-
 })
