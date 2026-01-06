@@ -1,11 +1,17 @@
 const path = require("path");
+const fs = require("fs");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const canisterIds = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, ".dfx", "local", "canister_ids.json"))
+);
+
 function initCanisterEnv() {
   let localCanisters, prodCanisters;
+  console.log("DBANK_CANISTER_ID:", process.env.DBANK_CANISTER_ID);
   try {
     localCanisters = require(path.resolve(
       ".dfx",
@@ -35,6 +41,10 @@ function initCanisterEnv() {
   }, {});
 }
 const canisterEnvVariables = initCanisterEnv();
+// const canisterEnvVariables = Object.keys(canisterIds).reduce((acc, name) => {
+//   acc[`${name.toUpperCase()}_CANISTER_ID`] = canisterIds[name].local;
+//   return acc;
+// }, {});
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -105,15 +115,15 @@ module.exports = {
   ],
   // proxy /api to port 8000 during development
   devServer: {
-    proxy: [{
-      "/api": {
-        target: "http://localhost:8000",
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://127.0.0.1:8000", // local replica port (was 8000 in older setups)
         changeOrigin: true,
-        pathRewrite: {
-          "^/api": "/api",
-        },
+        // pathRewrite: { "^/api": "/api" },
+        secure: false,
       },
-    }],
+    ],
     hot: true,
     watchFiles: [path.resolve(__dirname, "src", frontendDirectory)],
     liveReload: true,
