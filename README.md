@@ -1,3 +1,6 @@
+<img width="799" height="557" alt="image" src="https://github.com/user-attachments/assets/f2369cbd-6835-4bc2-8d32-75d673b53245" />
+
+
 # dbank
 
 Welcome to your new dbank project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
